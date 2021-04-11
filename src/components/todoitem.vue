@@ -192,18 +192,18 @@ export default {
     },
     methods: {
         clear() {
-            console.log(this.title)
+            
             this.$v.$reset()
             this.title = this.todo.title
             this.sum = this.todo.sum
             this.description = this.todo.description
             this.type = this.todo.type
             this.dialog = false
-            console.log(this.title)
+            
         },
         onSubmit(){
             this.$v.$touch()
-            console.log(this.title)
+    
             if (this.title !== '' && this.sum !== '' && this.description !== '' && this !== ''){
                 this.$emit('edit-todo', this.id, {
                     title: this.title,
