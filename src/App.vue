@@ -28,9 +28,7 @@ export default {
     return {
       Balance: 0,
       todos: [
-        {idd: 1, title: 'Монитор', sum: 5000 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'},
-        {idd: 2, title: 'Мышь', sum: 2000 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'},
-        {idd: 3, title: 'Клава', sum: 1500 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'}
+        
       ]
     }
   },
