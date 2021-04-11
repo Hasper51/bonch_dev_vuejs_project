@@ -52,6 +52,10 @@ export default {
     addTodo(todo) {
       this.todos.push(todo)
       this.balance()
+    },
+    editTodo(id,editedtodo){
+      this.todos.splice(id,1,editedtodo)
+      this.balance()
     }
   }
 }

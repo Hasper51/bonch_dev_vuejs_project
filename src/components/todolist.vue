@@ -22,8 +22,8 @@ export default {
       removeTodo(id){
           this.$emit('remove-todo',id)
       },
-      editTodo(id){
-          this.$emit('edit-todo',id)
+      editTodo(id,editedtodo){
+          this.$emit('edit-todo',id,editedtodo)
       }
   }
 
