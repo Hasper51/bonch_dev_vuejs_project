@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app>
+    
+      <h3>Итоговый баланс: {{Balance}}</h3>
+      <addTodo 
+        @add-todo='addTodo'
+      />
+      <todolist 
+        :todos="todos"
+        @remove-todo="removeTodo"
+        @edit-todo="editTodo"
+      />
+    </v-app>  
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import todolist from '@/components/todolist'
+import addTodo from '@/components/addTodo'
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
+    todolist,
+    addTodo
+  },
+  data () {
+    return {
+      Balance: 0,
+      todos: [
+        {idd: 1, title: 'Монитор', sum: 5000 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'},
+        {idd: 2, title: 'Мышь', sum: 2000 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'},
+        {idd: 3, title: 'Клава', sum: 1500 , date: '11.04.2021, 16:25:34', type: 'Доход', description: 'Новый'}
+      ]
+    }
+  },
+  methods: {
+    balance(){
+      this.Balance = 0
+      this.todos.forEach(element => {
+        
+        if (element.type === "Доход")
+          this.Balance+= Number.parseInt(element.sum)
+        else if  (element.type === "Расход")
+          this.Balance-= Number.parseInt(element.sum) 
+      });
+    },
+    removeTodo(id) {
+      this.todos.splice(id,1)
+      this.balance()
+    },
+    addTodo(todo) {
+      this.todos.push(todo)
+      this.balance()
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
