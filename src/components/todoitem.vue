@@ -192,14 +192,12 @@ export default {
     },
     methods: {
         clear() {
-            
             this.$v.$reset()
             this.title = this.todo.title
             this.sum = this.todo.sum
             this.description = this.todo.description
             this.type = this.todo.type
             this.dialog = false
-            
         },
         onSubmit(){
             this.$v.$touch()
